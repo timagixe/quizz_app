@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     List<String> questions = [
       'What is your favorite city?',
       'What\'s your favorite color?',
-      "What's your favorite number"
+      "What's your favorite number?"
     ];
 
     return MaterialApp(
