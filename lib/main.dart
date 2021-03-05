@@ -22,10 +22,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> questions = [
-      'What is your favorite city?',
-      'What\'s your favorite color?',
-      "What's your favorite number?"
+    List<Map<String, Object>> questions = [
+      {
+        'questionText': 'What is your favorite city?',
+        'answers': ['London', 'Kyiv', 'Moscow', 'New York']
+      },
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': ['Yellow', 'Blue', 'Green', 'Red']
+      },
+      {
+        'questionText': "What's your favorite number?",
+        'answers': ['Infinity', 'Thirteen', 'Hundred', 'Zero']
+      },
     ];
 
     return MaterialApp(
@@ -35,11 +44,9 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+            Question(questions[_questionIndex]['questionText']),
+            ...((questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) => Answer(_answerQuestion, answer))).toList(),
           ],
         ),
       ),
