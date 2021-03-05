@@ -19,35 +19,42 @@ class _MyAppState extends State<MyApp> {
     setState(() => _questionIndex = _questionIndex + 1);
   }
 
+  static const List<Map<String, Object>> _questions = [
+    {
+      'questionText': 'What is your favorite city?',
+      'answers': ['London', 'Kyiv', 'Moscow', 'New York']
+    },
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answers': ['Yellow', 'Blue', 'Green', 'Red']
+    },
+    {
+      'questionText': "What's your favorite number?",
+      'answers': ['Infinity', 'Thirteen', 'Hundred', 'Zero']
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    const List<Map<String, Object>> questions = [
-      {
-        'questionText': 'What is your favorite city?',
-        'answers': ['London', 'Kyiv', 'Moscow', 'New York']
-      },
-      {
-        'questionText': 'What\'s your favorite color?',
-        'answers': ['Yellow', 'Blue', 'Green', 'Red']
-      },
-      {
-        'questionText': "What's your favorite number?",
-        'answers': ['Infinity', 'Thirteen', 'Hundred', 'Zero']
-      },
-    ];
+    final bool noMoreQuestions = _questionIndex < _questions.length;
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('My App'),
         ),
-        body: Column(
-          children: [
-            Question(questions[_questionIndex]['questionText']),
-            ...((questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) => Answer(_answerQuestion, answer))).toList(),
-          ],
-        ),
+        body: noMoreQuestions
+            ? Column(
+                children: [
+                  Question(_questions[_questionIndex]['questionText']),
+                  ...((_questions[_questionIndex]['answers'] as List<String>)
+                          .map((answer) => Answer(_answerQuestion, answer)))
+                      .toList(),
+                ],
+              )
+            : Center(
+                child: Text('You did it'),
+              ),
       ),
     );
   }
