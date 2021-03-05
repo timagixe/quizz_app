@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, Object>> questions = [
+    const List<Map<String, Object>> questions = [
       {
         'questionText': 'What is your favorite city?',
         'answers': ['London', 'Kyiv', 'Moscow', 'New York']
