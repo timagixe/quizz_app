@@ -16,6 +16,5 @@ class Question extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
     );
-    // return Text(questionText);
   }
 }
