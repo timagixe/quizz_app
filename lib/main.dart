@@ -36,14 +36,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final bool noMoreQuestions = _questionIndex < _questions.length;
+    final bool noMoreQuestions = _questionIndex >= _questions.length;
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('My App'),
         ),
-        body: noMoreQuestions
+        body: !noMoreQuestions
             ? Column(
                 children: [
                   Question(_questions[_questionIndex]['questionText']),
