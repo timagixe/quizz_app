@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  final Function submitHandler;
+  final Function submitAnswer;
   final String answerText;
 
-  Answer(this.submitHandler, this.answerText);
+  Answer({
+    @required this.submitAnswer,
+    @required this.answerText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class Answer extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.8,
       child: ElevatedButton(
         child: Text(answerText),
-        onPressed: submitHandler,
+        onPressed: submitAnswer,
       ),
     );
   }
