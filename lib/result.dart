@@ -35,9 +35,12 @@ class Result extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            TextButton(
-              onPressed: onPressReset,
-              child: Text('Start again'),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: TextButton(
+                onPressed: onPressReset,
+                child: Text('Start again'),
+              ),
             )
           ],
         ),
